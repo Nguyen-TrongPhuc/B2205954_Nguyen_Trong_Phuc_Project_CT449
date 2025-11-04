@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const booksRouter = require("./app/routes/book.route");
-//const ApiError = require("./app/api-error");
+const ApiError = require("./app/api-error");
 const app = express();
 
 app.use(cors());
@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/books", booksRouter);
-/*app.use((req, res, next) => {
+app.use((req, res, next) => {
   return next(new ApiError(404, "Resource not found"));vi
 });
 app.use((err, req, res, next) => {
@@ -21,5 +21,5 @@ app.use((err, req, res, next) => {
     message: err.message || "Internal Server Error",
   });
 });
-*/
+
 module.exports = app;
