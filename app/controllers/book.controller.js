@@ -152,4 +152,18 @@ exports.findAllBorrowed = async (_req, res, next) => {
     );
   }
 };
+exports.findAllAvailable = async (_req, res, next) => {
+  try {
+    const bookService = new BookService(MongoDB.client);
+    const books = await bookService.findAvailable(); // 📗 lấy sách còn trong kho
+    return res.send(books);
+  } catch (error) {
+    return next(
+      new ApiError(
+        500,
+        "An error occurred while retrieving available books"
+      )
+    );
+  }
+};
 

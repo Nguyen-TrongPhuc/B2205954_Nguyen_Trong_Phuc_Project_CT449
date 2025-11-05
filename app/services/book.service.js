@@ -80,6 +80,8 @@ async deleteAll() {
 async findBorrowed() {
   return await this.find({ borrowed: true });
 }
-
+async findAvailable() {
+  return await this.find({ available: true });
+}
 }
 module.exports = BookService;
